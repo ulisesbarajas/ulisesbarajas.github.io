@@ -4,123 +4,305 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#090b10">
-  <meta name="description" content="Obsidian Labs: tecnología, aplicaciones y experimentación con inteligencia artificial.">
-  <title>Obsidian Labs | Tecnología sin límites</title>
+  <meta name="theme-color" content="#080b10">
+  <meta name="description" content="Obsidian Labs: desarrollo independiente, aplicaciones e inteligencia artificial.">
+  <title>Obsidian Labs | Tecnología y experimentación</title>
+
   <style>
     :root {
-      color-scheme: dark;
-      --fondo: #090b10;
-      --panel: #111720;
-      --cian: #00e5ff;
-      --texto: #e7edf5;
-      --secundario: #9ba9ba;
+      --background: #080b10;
+      --surface: #111820;
+      --cyan: #00e5ff;
+      --text: #edf5fa;
+      --muted: #a2b0bf;
+      --border: #25404b;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(ellipse at top, #12222c 0%, var(--fondo) 58%);
-      color: var(--texto);
+      background:
+        radial-gradient(ellipse at 50% 0%, #12303b 0%, transparent 48%),
+        var(--background);
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      display: flex;
-      flex-direction: column;
+      line-height: 1.7;
     }
 
     header {
-      padding: 24px 8%;
-      border-bottom: 1px solid #263744;
-      letter-spacing: 3px;
-      font-weight: bold;
+      min-height: 78px;
+      padding: 22px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
     }
 
-    header span { color: var(--cian); }
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+
+    .brand span {
+      color: var(--cyan);
+      text-shadow: 0 0 16px #00e5ff55;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .status::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan);
+    }
 
     main {
-      width: min(900px, 88%);
+      width: min(1000px, 88%);
       margin: auto;
-      padding: 80px 0;
+    }
+
+    .hero {
+      padding: 110px 0 90px;
       text-align: center;
     }
 
-    .sello {
-      color: var(--cian);
-      font-size: 13px;
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: bold;
       letter-spacing: 5px;
       text-transform: uppercase;
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      margin: 22px 0;
-      line-height: 1.05;
+      margin: 24px 0;
+      font-size: clamp(42px, 8vw, 78px);
+      line-height: 1.08;
+      letter-spacing: -2px;
     }
 
     h1 span {
-      color: var(--cian);
-      text-shadow: 0 0 28px #00e5ff35;
+      color: var(--cyan);
+      text-shadow: 0 0 35px #00e5ff30;
     }
 
     .intro {
-      max-width: 650px;
+      max-width: 700px;
       margin: 0 auto;
-      color: var(--secundario);
-      font-size: 18px;
-      line-height: 1.8;
+      color: var(--muted);
+      font-size: clamp(16px, 2.5vw, 19px);
     }
 
-    .tarjeta {
-      margin-top: 48px;
-      padding: 30px;
-      background: var(--panel);
-      border: 1px solid #24404b;
-      border-radius: 14px;
-      box-shadow: 0 0 35px #00e5ff0b;
+    .divider {
+      width: 90px;
+      height: 3px;
+      margin: 35px auto 0;
+      background: var(--cyan);
+      box-shadow: 0 0 18px #00e5ff88;
     }
 
-    .tarjeta h2 { color: var(--cian); }
+    section {
+      margin-bottom: 65px;
+    }
 
-    .tarjeta p {
-      color: var(--secundario);
-      line-height: 1.7;
+    .section-title {
+      margin-bottom: 25px;
+      font-size: 27px;
+    }
+
+    .section-title span {
+      color: var(--cyan);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 28px;
+      background: linear-gradient(145deg, #121c25, #0c1118);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+    }
+
+    .card-label {
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 12px 0;
+      font-size: 21px;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .philosophy {
+      padding: 35px;
+      background: #0d151d;
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .philosophy p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .philosophy strong {
+      color: var(--text);
     }
 
     footer {
-      padding: 25px;
+      padding: 30px 8%;
+      border-top: 1px solid var(--border);
       text-align: center;
-      color: #718092;
+      color: #78899a;
       font-size: 13px;
-      border-top: 1px solid #1c2934;
+    }
+
+    footer strong {
+      color: var(--cyan);
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 20px 6%;
+      }
+
+      .brand {
+        font-size: 17px;
+        letter-spacing: 2px;
+      }
+
+      .status {
+        font-size: 10px;
+      }
+
+      .hero {
+        padding: 80px 0 65px;
+      }
+
+      .philosophy {
+        padding: 24px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header>OBSIDIAN<span> LABS</span></header>
+  <header>
+    <div class="brand">OBSIDIAN<span> LABS</span></div>
+    <div class="status">Laboratorio independiente</div>
+  </header>
 
   <main>
-    <div class="sello">Tecnología · Creatividad · Experimentación</div>
+    <section class="hero">
+      <div class="eyebrow">Tecnología · Creatividad · Experimentación</div>
 
-    <h1>Construimos lo que <span>imaginamos.</span></h1>
+      <h1>
+        Construimos lo que<br>
+        <span>imaginamos.</span>
+      </h1>
 
-    <p class="intro">
-      Obsidian Labs es un espacio independiente dedicado al desarrollo
-      de aplicaciones, la exploración de inteligencia artificial y la
-      creación de herramientas digitales.
-    </p>
-
-    <section class="tarjeta">
-      <h2>Proyectos en desarrollo</h2>
-      <p>
-        Creamos herramientas digitales con una filosofía:
-        experimentar, aprender y mejorar mediante el uso real.
+      <p class="intro">
+        Obsidian Labs es un espacio independiente dedicado al desarrollo
+        de aplicaciones, la exploración de inteligencia artificial y la
+        creación de herramientas digitales mediante experimentación,
+        criterio humano y aprendizaje continuo.
       </p>
-      <p><strong>Agenda Note</strong> · Organización personal y productividad.</p>
+
+      <div class="divider"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Proyectos <span>en desarrollo</span></h2>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-label">Productividad</div>
+          <h3>Agenda Note</h3>
+          <p>
+            Una herramienta de organización personal que reúne contactos,
+            notas y citas en un mismo espacio digital.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Investigación aplicada</div>
+          <h3>Inteligencia artificial</h3>
+          <p>
+            Exploración práctica de modelos de IA, colaboración humano-IA
+            y diseño de herramientas asistidas por inteligencia artificial.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Desarrollo digital</div>
+          <h3>Próximos proyectos</h3>
+          <p>
+            Nuevas ideas, prototipos y aplicaciones creados mediante
+            experimentación, evaluación y mejora continua.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Nuestra <span>filosofía</span></h2>
+
+      <div class="philosophy">
+        <p>
+          <strong>La inteligencia artificial es una herramienta, no un
+          sustituto del criterio humano.</strong>
+          Diseñamos, probamos, cuestionamos y corregimos. El objetivo no
+          es aparentar que sabemos todas las respuestas, sino aprender
+          a construir mejores soluciones mediante la interacción entre
+          las personas y la tecnología.
+        </p>
+      </div>
     </section>
   </main>
 
-  <footer>Obsidian Labs · 2026 · Proyecto independiente</footer>
+  <footer>
+    <strong>OBSIDIAN LABS</strong>
+    <br>
+    Tecnología independiente · 2026
+  </footer>
 </body>
 </html>
 ```
